@@ -1,0 +1,13 @@
+.jumbotron{
+    height: 250px;
+    background-image: url(https://images.pexels.com/photos/1072179/pexels-photo-1072179.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940);
+    background-size: cover;
+    background-position-y: -120px;
+    color: #C2FFD9;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.judullist{
+    height: 40px;
+    text-align: center;
+}
