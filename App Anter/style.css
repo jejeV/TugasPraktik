@@ -1,0 +1,147 @@
+.all {
+    box-sizing: border-box;
+    padding: 0;
+    width: 700px;
+    height: 890px;
+    margin-top: 25px;
+    border: 3px solid #2C061F;
+    border-radius: 0%;
+    font-family: 'comic sans ms';
+    text-align: center;
+    background-color: #CDFFFC;
+}
+
+* {
+    text-decoration: none;
+    margin: 0px;
+    padding: 0px;
+}
+
+body {
+    margin:0px;
+    padding: 0px;
+    font-family: 'Open Sans', sans-serif;
+    background-color: #EDF6E5;
+}
+
+.wrapper {
+    width: 1100px;
+    margin: auto;
+    position: relative;
+}
+
+.logo a {
+    font-size: 50px;
+    font-weight: bold;
+    float: left;
+    font-family: courier;
+    color: #FF3F00;
+}
+
+nav {
+    width: 100;
+    margin: auto;
+    display: flex;
+    line-height: 80px;
+    position: sticky;
+    top: 0;
+    background: #EDF6E5;
+    z-index: 1;
+}
+
+
+#pengirim {
+    font-size: 20px;
+    margin-bottom: 8px;
+    background-color: #FDF5CA;
+    margin: 20px;
+    margin-left: 10px;
+}
+
+#penerima {
+    font-size: 20px;
+    margin-bottom: 8px;
+    background-color: #FFDEDE;
+    margin: 20px;
+    margin-left: 10px;
+}
+
+#jarak {
+    font-size: 20px;
+    margin-bottom: 8px;
+    background-color: #FFDFAF;
+    margin: 20px;
+    margin-left: 10px;
+    
+}
+
+#alamat {
+    font-size: 20px;
+    margin-bottom: 8px;
+    background-color: #F2BB7B;
+    margin: 20px;
+    margin-left: 10px;
+}
+
+
+#barang {
+    font-size: 20px;
+    margin-bottom: 8px;
+    background-color: #F6F7D7;
+    margin: 15px;
+    margin-left: 10px;
+}
+
+#harga {
+    font-size: 20px;
+    margin-bottom: 8px;
+    background-color: #D6E6F2;
+    margin: 15px;
+    margin-left: 20px;
+}
+
+#jumlah {
+    font-size: 20px;
+    margin-bottom: 8px;
+    background-color: #8EF6E4;
+    margin: 15px;
+    margin-left: 10px;
+}
+
+#berat {
+    font-size: 20px;
+    margin-bottom: 8px;
+    background-color: #FDFFAB;
+    margin: 15px;
+    margin-left: 10px;
+}
+
+#total {
+    
+    font-size: 15px;
+    margin-bottom: 8px;
+    background-color: #FFD3B5;
+    margin: 15px;
+    margin-left: 10px;
+}
+
+#dis {
+    font-size: 15px;
+    margin-bottom: 8px;
+    background-color: #FFF6F6;
+    margin: 15px;
+    margin-left: 10px;
+}
+
+#bayar {
+    font-size: 15px;
+    margin-top: 10px;
+    background-color: #FF9A3C;
+    margin: 15px;
+    margin-left: 10px;
+}
+
+.button {
+    margin-bottom: 10px;
+    margin: 20px;
+}
