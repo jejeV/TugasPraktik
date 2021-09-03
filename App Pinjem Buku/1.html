@@ -10,7 +10,8 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
         integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
 
-    <title>Perpustakaan Online</title>
+    <title>Cart</title>
+    
     <style>
         .navbar {
             height: 100%;
@@ -24,56 +25,41 @@
         }
 
         body {
-           background-color: #FCEEE5;
+            background-color: snow;
         }
+       
     </style>
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-black">
-        <a class="navbar-brand" href="index.html">Home</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Genre
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="fantasy.html">Fantasy</a>
-                        <a class="dropdown-item" href="comics.html">Comics</a>
-                    </div>
-                </li>
-            </ul>
-        </div>
-    </nav><br>
+    <nav class="navbar navbar-light bg-light">
+        <a class="navbar-brand" href="index.html">
+          <img src="https://image.flaticon.com/icons/png/512/1499/1499956.png" width="35" height="40" class="d-inline-block align-top" alt="">
+          #Pinjam
+        </a>
+      </nav>
 
     <div class="container">
         <div class="row">
             <div class="col-4">
                 <div class="judulist bg-dark rounded text-center text-white pt-2">List Buku</div>
-
                 <table width = "100%">
                     <tbody>
+                        
                         <tr>
-                            <td></td>
+                            
                             <td>.</td>
                         </tr>
-                        <tr class="bg-dark text-white">
-                            <td>Batas Meminjam Buku</td>
-                            <td>3</td>
+                        <tr class="bg-dark text-white ">
+                            <td>Batas Peminjaman Buku </td>
+                            <td>4</td>
                         </tr>
                     </tbody>  
                   </table>
 
                 <div class="listkeranjang" id="listkeranjang"></div>
 
-                
+
 
                 <!-- Modal -->
                 <div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1"
@@ -81,7 +67,7 @@
                     <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h5 class="modal-title" id="staticBackdropLabel">Form Peminjaman Buku</h5>
+                                <h5 class="modal-title" id="staticBackdropLabel">Peminjaman Buku</h5>
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                 </button>
@@ -89,12 +75,12 @@
 
                             <div class="modal-body" id="modal-body">
 
-                                
+
 
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                                <button type="button" class="btn btn-primary" id="pinjamDong">Pinjam</button>
+                                <button type="button" class="btn btn-primary float-right" id="pinjamDong">Pinjam</button>
                             </div>
                         </div>
                     </div>
@@ -108,131 +94,84 @@
         </div>
     </div>
 
-    <div class="container" id="containerHasil" style="margin-top: -50%;">
 
-    </div>
+    <div class="container" id="containerHasil" style="margin-top: 0%;">
 
-    <script>
-        var namabarang = ['Boku No Hero Academia 4', 'Boku No Hero Academia 3', 'Boku No Hero Academia 2','Boku No Hero Academia 1']
+        <script>
+           var namabarang = ['Boku No Hero Academia 4', 'Boku No Hero Academia 3', 'Boku No Hero Academia 2','Boku No Hero Academia 1']
         var gambarbarang = ['https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1456363583i/25476305.jpg','https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1456363542i/25476221.jpg','https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1429116667i/24481293.jpg','https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1438355026i/25696035.jpg']
 
-        var listproduk = document.getElementById('listproduk')
-        var listkeranjang = document.getElementById('listkeranjang')
+            var listproduk = document.getElementById('listproduk')
+            var listkeranjang = document.getElementById('listkeranjang')
 
-        var namabarang_keranjang = []
+            var namabarang_keranjang = []
 
-        function showListProduk() {
-            listproduk.innerHTML = ''
-            for (let i = 0; i < namabarang.length; i++) {
-                listproduk.innerHTML += 
-                    '<div class="card float-right mr-3 mb-3 bg-dark text-white" style="width: 10rem;">' +
-                    '<img src=' + gambarbarang[i] + ' alt="...">' +
-                    ' <div class="card-body">' +
-                    '<h5 class="card-title">' + namabarang[i] + '</h5>' +
-                    ' <a href="#" class="btn btn-primary" onclick="addlistitem(' + i + ')">Pinjam</a>' +
-                    ' </div>' +
-                    ' </div>'
+            function showListProduk() {
+                listproduk.innerHTML = ''
+                for (let i = 0; i < namabarang.length; i++) {
+                    listproduk.innerHTML += 
+                       '<div class="card float-right mr-3 bg-dark text-white" style="width: 10rem;">' +
+                        '<img src=' + gambarbarang[i] + ' alt="...">' +
+                        ' <div class="card-body">' +
+                        '<h5 class="card-title">' + namabarang[i] + '</h5>' +
+                        ' <a href="#" class="btn btn-primary float-right" onclick="addlistitem(' + i + ')">Pinjam</a>' +
+                        ' </div>' +
+                        ' </div>'
+                }
             }
-        }
 
 
-        function addlistitem(id) {
+            function addlistitem(id) {
 
-            namabarang_keranjang.push(namabarang[id])
+                namabarang_keranjang.push(namabarang[id])
 
-            showlistkeranjang()
-        }
-        var listkeranjang = document.getElementById('listkeranjang')
-
-        function showlistkeranjang() {
-            listkeranjang.innerHTML = ''
-
-
-
-            for (let i = 0; i < namabarang_keranjang.length; i++) {
-                listkeranjang.innerHTML += 
-                    '<div class="card mt-3 mb-3 bg-dark text-white" style="width: 22rem;">' +
-                    '<div class="card-body">' +
-                    '<h5 class="card-title">' + namabarang_keranjang[i] + '</h5>' +
-                    '<p>Jumlah : 1</p>' +
-                    ' <a href="#" class="btn btn-danger float-right mb-2" onclick="deleteitem(' + i + ')">Hapus</a>' +
-                    `<button type="button" class="btn btn-primary mt-3 btn-block" data-toggle="modal"
-                            data-target="#staticBackdrop" onclick="regis(${i})">
-                            Pinjam
-                        </button>`+
-                    '</div>' +
-                    '</div>'
-
-
+                showlistkeranjang()
             }
-        }
+            var listkeranjang = document.getElementById('listkeranjang')
 
-        function regis() {
-            const modalBody = document.getElementById("modal-body");
+            function showlistkeranjang() {
+                listkeranjang.innerHTML = ''
 
-            modalBody.innerHTML = "";
-            modalBody.innerHTML = 
-            `<label for="namapeminjam">Nama Peminjam</label>
-            <input type="teks" class="form-control" id="id_namasiswa"
-            placeholder="Masukkan Nama Peminjam">
+                // mt-4 btn-block
 
-            <label for="idpeminjam">ID Peminjam</label>
-            <input type="teks" class="form-control" id="id" placeholder="Masukkan ID Peminjam">
+                for (let i = 0; i < namabarang_keranjang.length; i++) {
+                    listkeranjang.innerHTML += 
+                        '<div class="card mt-3 mb-3 bg-white text-black" style="width: 22rem;">' +
+                        '<div class="card-body">' +
+                        '<h5 class="card-title">' + namabarang_keranjang[i] + '</h5>' +
+                        '<p>Jumlah : 1</p>' +
+                        ' <a href="#" class="btn btn-danger float-right mb-3" onclick="deleteitem(' + i + ')">Hapus</a>' +
+                        `<a href="bootstrap.html" class="btn btn-primary">Pinjem</a>`+
+                        '</div>' +
+                        '</div>'
 
-            <label for="alamat">Alamat</label>
-            <textarea class="form-control" id="id_alamat" placeholder="Masukkan Alamat Peminjam" rows="3"></textarea>
 
-            <label for="tglpeminjaman">Tanggal Peminjaman</label>
-            <input type="date" class="form-control" id="id_tglpeminjaman">
+                }
+            }
 
-            <label for="bataswaktu">Batas Waktu</label>
-            <input type="date" class="form-control" id="id_bataswaktu">`;
+           
+            showListProduk()
 
-            namabarang_keranjang.forEach((el, ind) => {
-                const buttonP = document.getElementById("pinjamDong");
-                buttonP.setAttribute("onclick", `bayar(${ind})`);
-            })
+            function deleteitem(id) {
+                if (confirm("Apakah anda yakin ingin menghapus ini ?")) {
+
+                } else {
+                    tetep_ada
+                }
+
+                namabarang_keranjang.pop(id, 1)
+
+                showlistkeranjang()
+            }
+
             
 
 
-        }
 
-        showListProduk()
+        </script>
+    </div>
 
-        function deleteitem(id) {
-            if (confirm("Apakah anda yakin ingin menghapus ini ?")) {
 
-            } else {
-                tetep_ada
-            }
-
-            namabarang_keranjang.pop(id, 1)
-
-            showlistkeranjang()
-        }
-
-        function bayar(id) {
-                var nama = document.getElementById("id_namasiswa").value;
-                var Tanggalpeminjam = document.getElementById("id_tanggal").value;
-                var Tanggalbatas = document.getElementById("id_tanggalbatas").value;
-                var alamat = document.getElementById("id_alamat").value;
-                var no = document.getElementById("id_nohp").value;
-
-            var containerHasil = document.getElementById("containerHasil");
-            containerHasil.innerHTML = "";
-            containerHasil.innerHTML = 
-            '<div class="card" style="width: 18rem;">'+
-            '<div class="card-body">' +
-            '<h5 class="card-title">'+namabarang_keranjang[id]+'</h5>' +
-            '<h6 class="card-subtitle mb-2 text-muted">'+ nama +'</h6>' +
-            '<p class="card-text">'+ Tanggalpeminjam +'</p>' +
-            '<p class="card-text">'+ Tanggalbatas +'</p>' +
-            '<p class="card-text">'+ alamat +'</p>' +
-            '<p class="card-text">'+ no +'</p>' +
-            '</div>' +
-            '</div>';
-            }
-    </script>
 
     <!-- Optional JavaScript; choose one of the two! -->
 
@@ -253,3 +192,4 @@
 </body>
 
 </html>
+

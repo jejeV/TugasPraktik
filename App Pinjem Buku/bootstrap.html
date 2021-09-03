@@ -1,0 +1,189 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+
+    <title>Hello, world!</title>
+    <style>
+.container {
+width: 950px;
+height: 600px;
+}
+
+.btn-edit {
+background-color: #f0ad4e;
+color: white;
+padding: 14px 20px;
+margin: 8px 0;
+margin-right: 8px;
+border: none;
+border-radius: 4px;
+cursor: pointer;
+}
+
+.btn-edit:hover {
+background-color: #f1b55f;
+}
+
+.btn-hapus {
+background-color: #f44336;;
+color: white;
+padding: 14px 16px;
+margin: 8px 0;
+border: none;
+border-radius: 2px;
+cursor: pointer;
+
+}
+
+.btn-hapus:hover {
+background-color: #f5554a;
+}
+
+   </style>
+</head>
+<body>
+
+ <center>
+   <h1 style="color: tomato;">Data Siswa</h1>
+ </center>
+
+   <div class="container card shadow rounded">
+       <div class="form-group">
+           <label for="namasiswa">Nama Peminjam</label>
+           <input type="text" class="form-control" id="data_namasiswa">
+           <label for="nisn">Nama Buku</label>
+           <input type="text" class="form-control" id="data_nisn">
+           <label for="nisn">Tanggal Peminjaman</label>
+           <input type="date" class="form-control" id="data_kelas">
+           <label for="nisn">Tanggal Tempo</label>
+           <input type="date" class="form-control" id="data_kelamin">
+       </div>
+       
+           <label for="alamat">Alamat</label>
+           <textarea class="form-control" id="data_alamat" rows="3"></textarea>
+       <button class="btn btn-primary mt-4" onclick="tambah()">Save</button>
+
+       <table class="table mt-4">
+           <thead>
+             <tr>
+               <th scope="col">No</th>
+               <th scope="col">Nama Peminjam</th>
+               <th scope="col">Nama Buku</th>
+               <th scope="col">Tanggal Peminjaman</th>
+               <th scope="col">Tanggal Tempo</th>
+               <th scope="col">Alamat</th>
+               <th scope="col">Action</th>
+             </tr>
+           </thead>
+           <tbody id="tampildata">
+           </tbody>
+         </table>
+   </div>
+
+   <script>
+       var namasiswa = []
+       var nisn = []
+       var kelamin = []
+       var kelas = []
+       var alamat = []
+
+       var tampil = document.getElementById('tampildata')
+
+       function showData() {
+           tampil.innerHTML = ""
+
+           for(i = 0; i<namasiswa.length; i++){
+               var nodata = i+1
+               tampil.innerHTML += "<tr>"+
+                   "<td>"+nodata+"</td>"+
+                   "<td>"+namasiswa[i]+"</td>"+
+                   "<td>"+nisn[i]+"</td>"+
+                   "<td>"+kelamin[i]+"</td>"+
+                   "<td>"+kelas[i]+"</td>"+
+                   "<td>"+alamat[i]+"</td>"+
+                   "<td>"+
+                       "<button class='btn-edit' onclick='edit("+ i +")'>Edit</button>"+
+                       "<button class='btn-hapus float-left' onclick='hapus("+ i +")'>Delete</button>"+
+                   "</td>"+
+             "</tr>"
+           }
+       }
+
+       ShowData()
+
+       function tambah() {
+           var namabaru = document.getElementById('data_namasiswa').value
+           var nisnbaru = document.getElementById('data_nisn').value
+           var kelaminbaru = document.getElementById('data_kelamin').value
+           var kelasbaru = document.getElementById('data_kelas').value
+           var alamatbaru = document.getElementById('data_alamat').value
+
+           namasiswa.push(namabaru)
+           nisn.push(nisnbaru)
+           kelamin.push(kelaminbaru)
+           kelas.push(kelasbaru)
+           alamat.push(alamatbaru)
+
+           showData()
+       }
+
+       function edit(id){
+           var editnama = prompt("Ganti Nama",namasiswa[id])
+           namasiswa[id] = editnama;
+
+           var editnisn = prompt("Ganti Buku",nisn[id])
+           nisn[id] = editnisn;
+
+           var editkelamin = prompt("Ganti Tanggal Peminjaman",kelamin[id])
+           kelamin[id] = editkelamin;
+           
+           var editalamat = prompt("Ganti Alamat",alamat[id])
+           alamat[id] = editalamat;
+
+           showData()
+       }
+
+       function hapus(i) {
+           var namabaru = document.getElementById('data_namasiswa').value
+           var nisnbaru = document.getElementById('data_nisn').value
+           var kelaminbaru = document.getElementById('data_kelamin').value
+           var kelasbaru = document.getElementById('data_kelas').value
+           var alamatbaru = document.getElementById('data_alamat').value
+
+           namasiswa.pop(i,1)
+           nisn.pop(i,1)
+           kelamin.pop(i,1)
+           kelas.pop(i,1)
+           alamat.pop(i,1)
+
+           showData()
+       
+       }
+   </script>
+</body>
+</html>
+
+      
+
+
+
+
+
+    <!-- Optional JavaScript; choose one of the two! -->
+
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
+
+    <!-- Option 2: Separate Popper and Bootstrap JS -->
+    <!--
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js" integrity="sha384-eMNCOe7tC1doHpGoWe/6oMVemdAVTMs2xqW4mwXrXsW0L84Iytr2wi5v2QjrP/xp" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.min.js" integrity="sha384-cn7l7gDp0eyniUwwAZgrzD06kc/tftFf19TOAs2zVinnD/C7E91j9yyk5//jjpt/" crossorigin="anonymous"></script>
+    -->
+  </body>
+</html>
